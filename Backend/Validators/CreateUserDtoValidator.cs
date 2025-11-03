@@ -1,3 +1,6 @@
+using Backend.DTOs;
+using FluentValidation;
+
 public class CreateUserDtoValidator : AbstractValidator<CreateUserDto>
 {
     public CreateUserDtoValidator()
