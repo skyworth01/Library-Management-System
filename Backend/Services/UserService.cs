@@ -24,10 +24,16 @@ namespace Backend.Services
             return _mapper.Map<UserResponseDto>(userEntity);
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<UserResponseDto> GetAllUsers()
         {
             var users = _userRepository.GetAll();
-            return users;
+            return _mapper.Map<IEnumerable<UserResponseDto>>(users);
+        }
+
+        public UserResponseDto? GetUser(int id)
+        {
+            var user = _userRepository.GetById(id);
+            return user == null ? null : _mapper.Map<UserResponseDto>(user);
         }
 
     }

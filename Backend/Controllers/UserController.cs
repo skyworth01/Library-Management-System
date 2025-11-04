@@ -20,17 +20,8 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var user = new User
-            {
-                FullName = "John Doe",
-                Address = "123 Main Street",
-                Role = Role.Librarian,
-                Phone = "9876543210",
-                ExternalId = $"EXT-{id}",
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
-            };
-
+            var user = _userService.GetUser(id);
+            if (user == null) return NotFound();
             return Ok(user);
         }
 

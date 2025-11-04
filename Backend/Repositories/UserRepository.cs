@@ -1,5 +1,6 @@
 using Backend.Data;
 using Backend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Repositories
 {
@@ -12,7 +13,7 @@ namespace Backend.Repositories
             _context = context;
         }
 
-        public IEnumerable<User> GetAll() => _context.Users.ToList();
+        public IEnumerable<User> GetAll() => _context.Users.AsNoTracking().ToList();
 
         public void Add(User user)
         {
@@ -22,6 +23,11 @@ namespace Backend.Repositories
         public void Save()
         {
             _context.SaveChanges();
+        }
+
+        public User? GetById(int id)
+        {
+            return _context.Users.Find(id);
         }
     }
 }

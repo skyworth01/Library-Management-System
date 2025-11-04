@@ -7,5 +7,6 @@ namespace Backend.Repositories
         IEnumerable<User> GetAll();
         void Add(User user);
         void Save();
+        User? GetById(int id);
     }
 }

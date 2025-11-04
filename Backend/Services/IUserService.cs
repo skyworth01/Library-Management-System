@@ -6,6 +6,8 @@ namespace Backend.Services
     public interface IUserService
     {
         UserResponseDto CreateUser(CreateUserDto user);
-        IEnumerable<User> GetAllUsers();
+        IEnumerable<UserResponseDto> GetAllUsers();
+
+        UserResponseDto? GetUser(int id);
     }
 }
