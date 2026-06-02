@@ -15,7 +15,7 @@ namespace Backend.Repositories
 
         public IEnumerable<Product> GetAll() => _context.Products.ToList();
 
-        public Product? GetById(int id) => _context.Products.Find(id);
+        public async Task<Product?> GetByIdAsync(int id) => await _context.Products.FindAsync(id);
 
         public void Add(Product product)
         {

@@ -15,7 +15,17 @@ namespace Backend.Services
 
         public IEnumerable<Product> GetAllProducts() => _repository.GetAll();
 
-        public Product? GetProduct(int id) => _repository.GetById(id);
+        public async Task<Product> GetProductAsync(int id)
+        {
+            var product = await _repository.GetByIdAsync(id);
+
+            if (product == null)
+            {
+                throw new Exception("Product not found");
+            }
+
+            return product;
+        }
 
         public void CreateProduct(Product product)
         {

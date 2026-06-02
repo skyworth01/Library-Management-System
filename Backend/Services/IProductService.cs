@@ -6,7 +6,7 @@ namespace Backend.Services
     public interface IProductService
     {
         IEnumerable<Product> GetAllProducts();
-        Product? GetProduct(int id);
+        Task<Product> GetProductAsync(int id);
         void CreateProduct(Product product);
         void UpdateProduct(Product product);
         void DeleteProduct(int id);
