@@ -15,14 +15,6 @@ namespace Backend.Services
             _userRepository = repository;
             _mapper = mapper;
         }
-        public UserResponseDto CreateUser(CreateUserDto user)
-        {
-            var userEntity = _mapper.Map<User>(user);
-            _userRepository.Add(userEntity);
-            _userRepository.Save();
-
-            return _mapper.Map<UserResponseDto>(userEntity);
-        }
 
         public IEnumerable<UserResponseDto> GetAllUsers()
         {
@@ -30,9 +22,9 @@ namespace Backend.Services
             return _mapper.Map<IEnumerable<UserResponseDto>>(users);
         }
 
-        public UserResponseDto? GetUser(int id)
+        public async Task<UserResponseDto?> GetUser(int id)
         {
-            var user = _userRepository.GetById(id);
+            var user = await _userRepository.GetByIdAsync(id);
             return user == null ? null : _mapper.Map<UserResponseDto>(user);
         }
 

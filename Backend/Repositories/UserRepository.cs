@@ -13,21 +13,28 @@ namespace Backend.Repositories
             _context = context;
         }
 
-        public IEnumerable<User> GetAll() => _context.Users.AsNoTracking().ToList();
+        public IQueryable<User> GetAll() => _context.Users.AsNoTracking().AsQueryable();
 
         public void Add(User user)
         {
             _context.Users.Add(user);
         }
 
-        public void Save()
+        public async Task<User?> GetByEmailIdAsync(string emailId)
         {
-            _context.SaveChanges();
+            return await _context.Users
+                .FirstOrDefaultAsync(
+                    x => x.EmailId == emailId);
         }
 
-        public User? GetById(int id)
+        public async Task SaveAsync()
         {
-            return _context.Users.Find(id);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<User?> GetByIdAsync(int id)
+        {
+            return await _context.Users.FindAsync(id);
         }
     }
 }

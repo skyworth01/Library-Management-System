@@ -3,15 +3,13 @@ using Backend.Enums;
 
 namespace Backend.DTOs
 {
-    public class CreateUserDto
+    public class RegisterUserDto
     {
         [Required]
         public string FullName { get; set; } = default!;
-        public string? Address { get; set; }
-        [Required]
-        public Role Role { get; set; }
         [Phone]
         public string? Phone { get; set; }
-        public string? ExternalId { get; set; }
+        public string EmailId { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
 }

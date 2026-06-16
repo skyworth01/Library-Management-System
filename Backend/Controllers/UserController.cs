@@ -25,13 +25,6 @@ namespace Backend.Controllers
             return Ok(user);
         }
 
-        [HttpPost]
-        public IActionResult AddUser([FromBody] CreateUserDto user)
-        {
-            var response = _userService.CreateUser(user);
-            return CreatedAtAction(nameof(GetById), new { id = response.UserId }, response);
-        }
-
         [HttpGet]
         public IActionResult GetAllUsers()
         {

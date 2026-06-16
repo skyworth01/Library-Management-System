@@ -4,9 +4,10 @@ namespace Backend.Repositories
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetAll();
+        IQueryable<User> GetAll();
         void Add(User user);
-        void Save();
-        User? GetById(int id);
+        Task SaveAsync();
+        Task<User?> GetByIdAsync(int id);
+        Task<User?> GetByEmailIdAsync(string emailId);
     }
 }

@@ -8,7 +8,7 @@ namespace Backend.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<CreateUserDto, User>();
+            CreateMap<RegisterUserDto, User>();
             CreateMap<User, UserResponseDto>();
         }
     }
