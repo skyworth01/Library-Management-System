@@ -56,6 +56,8 @@ namespace Backend.Services
                     dto.Password);
 
             user.Role = Enums.Role.User;
+            user.CreatedAt = new DateTime();
+            user.UpdatedAt = new DateTime();
 
             _userRepository.Add(user);
             await _userRepository.SaveAsync();
